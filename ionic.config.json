@@ -1,5 +1,7 @@
 {
   "name": "Sky-Finder-App",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

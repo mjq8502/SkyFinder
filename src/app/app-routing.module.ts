@@ -14,7 +14,10 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
-  }
+  },
+  { path: 'telescopes', loadChildren: './telescopes/telescopes.module#TelescopesPageModule' },
+  { path: 'sky-objects', loadChildren: './sky-objects/sky-objects.module#SkyObjectsPageModule' },
+  { path: 'paths', loadChildren: './paths/paths.module#PathsPageModule' }
 ];
 
 @NgModule({

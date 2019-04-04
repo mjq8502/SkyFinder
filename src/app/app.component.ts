@@ -16,6 +16,21 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Telescopes',
+      url: '/telescopes',
+      icon: 'list'
+    },
+    {
+      title: 'Sky Objects',
+      url: '/sky-objects',
+      icon: 'list'
+    },
+    {
+      title: 'Paths',
+      url: '/paths',
+      icon: 'list'
+    },
+    {
       title: 'List',
       url: '/list',
       icon: 'list'
