@@ -1,0 +1,32 @@
+[
+{
+"ObjectID": 1,
+"Name": "27-Gamma Cassiopeiae",
+"RA_Hour": 0,
+"RA_Min": 57,
+"RA_Sec": 52,
+"Decl_Hour": 60,
+"Decl_Min": 49,
+"Decl_Sec": 20
+},
+{
+"ObjectID": 2,
+"Name": "37-Delta Cassiopeiae",
+"RA_Hour": 1,
+"RA_Min": 27,
+"RA_Sec": 4,
+"Decl_Hour": 60,
+"Decl_Min": 20,
+"Decl_Sec": 11
+},
+{
+"ObjectID": 3,
+"Name": "M103",
+"RA_Hour": 1,
+"RA_Min": 45,
+"RA_Sec": 19,
+"Decl_Hour": 61,
+"Decl_Min": 58,
+"Decl_Sec": 49
+}
+]

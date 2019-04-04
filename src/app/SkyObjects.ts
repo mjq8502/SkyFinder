@@ -1,10 +1,10 @@
-export interface IProduct {
-    productId: number;
-    productName: string;
-    productCode: string;
-    releaseDate: string;
-    price: number;
-    description: string;
-    starRating: number;
-    imageUrl: string;
+export interface ISkyObject {
+    ObjectID: number;
+    Name: string;
+    RA_Hour: number;
+    RA_Min: number;
+    RA_Sec: number;
+    Decl_Hour: number;
+    Decl_Min: number;
+    Decl_Sec: number;
 }

@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { IProduct } from './Products';
+import { ISkyObject } from './SkyObjects';
 @Injectable({
     providedIn: 'root'
 })
-export class ProductService {
-    private ProductUrl = 'assets/products.json';
+export class SkyObjectService {
+    //private ProductUrl = 'assets/products.json';
+    private SkyObjectUrl = 'assets/SkyObjects.json';
 
     constructor(private http: HttpClient) { }
 
-    getProducts(): Observable<IProduct[]> {
-        return this.http.get<IProduct[]>(this.ProductUrl).pipe(
+    getSkyObjects(): Observable<ISkyObject[]> {
+        return this.http.get<ISkyObject[]>(this.SkyObjectUrl).pipe(
             tap(data => console.log('All: ' + JSON.stringify(data))), 
             catchError(this.handleError));
     }

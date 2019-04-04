@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../SkyObjects';
-import { ProductService } from "../SkyObjects.service";
+import { SkyObjectService } from "../SkyObjects.service";
+import { ISkyObject } from '../SkyObjects';
 
 
 @Component({
@@ -9,16 +9,16 @@ import { ProductService } from "../SkyObjects.service";
   styleUrls: ['./sky-objects.page.scss'],
 })
 export class SkyObjectsPage implements OnInit {
-  skyObjects: IProduct[] = [];
+  skyObjects: ISkyObject[] = [];
   errorMessage: string;
 
-  constructor(private productService: ProductService) { 
+  constructor(private skyObjectService: SkyObjectService) { 
 
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(
-      products => this.skyObjects = products,
+    this.skyObjectService.getSkyObjects().subscribe(
+      skyObjects => this.skyObjects = skyObjects,
       error => this.errorMessage = <any>error
     )
 
