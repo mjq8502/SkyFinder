@@ -8,6 +8,7 @@ import { ISkyObject } from '../SkyObjects';
   templateUrl: './sky-objects.page.html',
   styleUrls: ['./sky-objects.page.scss'],
 })
+
 export class SkyObjectsPage implements OnInit {
   skyObjects: ISkyObject[] = [];
   errorMessage: string;

@@ -1,0 +1,14 @@
+[
+    {
+    "SkyPathID":1,
+    "SkyObjectIDs":[2,3]
+    },
+    {
+    "SkyPathID":2,
+    "SkyObjectIDs":[1,2]
+    },
+    {
+    "SkyPathID":3,
+    "SkyObjectIDs":[1,2,3]
+    }
+]
