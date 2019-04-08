@@ -9,15 +9,22 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router'
+import { PathDetailPage } from './path-detail/path-detail.page';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+    PathDetailPage],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path : 'Path-Detail', component: PathDetailPage}
+    ])
   ],
   providers: [
     StatusBar,
