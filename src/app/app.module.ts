@@ -23,7 +23,7 @@ import { PathDetailPage } from './path-detail/path-detail.page';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path : 'Path-Detail', component: PathDetailPage}
+      { path : 'Path-Detail/:id', component: PathDetailPage}
     ])
   ],
   providers: [
