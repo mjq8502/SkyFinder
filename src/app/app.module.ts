@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router'
 import { PathDetailPage } from './path-detail/path-detail.page';
+import { IonicStorageModule} from '@ionic/storage';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PathDetailPage } from './path-detail/path-detail.page';
     HttpClientModule,
     RouterModule.forRoot([
       { path : 'Path-Detail/:id', component: PathDetailPage}
-    ])
+    ]),
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

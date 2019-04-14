@@ -7,7 +7,33 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of selectedPath.SkyObjects" >
-      {{item.Name}}
+        <ion-icon name="arrow-round-forward"></ion-icon>
+        {{item.Name}}
     </ion-item>
   </ion-list>
+  <ion-card>
+    <ion-item>
+      Current Object = {{currentObject}}
+    </ion-item>
+      <ion-list>
+          <ion-item>
+            RA Turns:   Hours: {{RAHoursToNextObject}},   Minutes: {{RAMinutesToNextObject}}
+          </ion-item>
+          <ion-item>
+            Dec Turns:  Hours: {{DecHoursToNextObject}},   Minutes: {{DecMinutesToNextObject}}
+            </ion-item>
+        </ion-list>
+  </ion-card>
 </ion-content>
+<ion-footer>
+    <ion-row center>
+        <ion-col text-center>
+          <ion-button (click)="button_click_Prev()">
+            Prev
+          </ion-button>
+          <ion-button  (click)="button_click_Next()">
+            Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+</ion-footer>
