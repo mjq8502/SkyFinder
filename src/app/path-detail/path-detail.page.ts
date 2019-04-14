@@ -14,6 +14,7 @@ export class PathDetailPage implements OnInit {
   selectedPath: ISkyPath2;
   errorMessage: string;
   currentObject: number;
+  currentObjectIndex: number = 0;
   RAHoursToNextObject: number;
   RAMinutesToNextObject: number;
   DecHoursToNextObject: number;
@@ -35,7 +36,7 @@ export class PathDetailPage implements OnInit {
     this.skyPaths2 = val;
     this.selectedPath = this.skyPaths2.find(
                             z => z.SkyPathID == +this.route.snapshot.paramMap.get('id'));
-    this.currentObject = 0;
+    this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex].ObjectID;
   });
 
     this.RAHoursToNextObject = 1;
@@ -46,11 +47,17 @@ export class PathDetailPage implements OnInit {
   }
 
   button_click_Prev(){
-    this.currentObject = this.currentObject - 1;
+    if(this.currentObjectIndex > 0){
+      this.currentObjectIndex = this.currentObjectIndex - 1;
+      this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex].ObjectID;
+    }
   }
 
   button_click_Next(){
-    this.currentObject = this.currentObject + 1;
+    if (this.currentObjectIndex + 1 < this.selectedPath.SkyObjects.length){
+      this.currentObjectIndex = this.currentObjectIndex + 1;
+      this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex].ObjectID;
+    }
   }
 
 

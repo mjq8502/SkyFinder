@@ -7,13 +7,13 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of selectedPath.SkyObjects" >
-        <ion-icon name="arrow-round-forward"></ion-icon>
-        {{item.Name}}
+        <ion-icon name="arrow-round-forward" *ngIf="item.ObjectID==currentObject"></ion-icon>
+        {{item.Name}}, id={{item.ObjectID}}
     </ion-item>
   </ion-list>
   <ion-card>
     <ion-item>
-      Current Object = {{currentObject}}
+      Current Object = {{currentObject}}, indx = {{currentObjectIndex}},  len = {{selectedPath.SkyObjects.length}}
     </ion-item>
       <ion-list>
           <ion-item>
