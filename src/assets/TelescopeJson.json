@@ -1,0 +1,15 @@
+[
+    {
+    "TelescopeID": 1,
+    "TelescopeName": "Celestron 70EQ",
+    "RA_SecondsPerTurn": 900,
+    "Decl_SecondsPerTurn": 7200
+    },
+    {
+    "TelescopeID": 2,
+    "TelescopeName": "Celestron C4.5",
+    "RA_SecondsPerTurn": 600,
+    "Decl_SecondsPerTurn": 18000
+    }
+    ]
+    

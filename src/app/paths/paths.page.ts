@@ -3,6 +3,7 @@ import { ISkyPath } from '../SkyPath';
 import { SkyObjectService } from '../SkyObjects.service';
 import { ISkyPath2 } from '../SkyPaths2';
 import { Storage} from '@ionic/storage';
+import { ITelescope } from '../ITelescope';
 
 @Component({
   selector: 'app-paths',
@@ -11,6 +12,7 @@ import { Storage} from '@ionic/storage';
 })
 export class PathsPage implements OnInit {
   skyPaths2: ISkyPath2[] = [];
+  telescopes: ITelescope[] = [];
   errorMessage: string;
 
   constructor(private skyObjectService: SkyObjectService,
@@ -26,6 +28,16 @@ export class PathsPage implements OnInit {
       },
       error => this.errorMessage = <any>error
     );
+    this.skyObjectService.getTelescopes().subscribe(
+      telescopes => {
+        this.telescopes = telescopes;
+        this.storage.set('Telescopes', this.telescopes);
+      },
+      error => this.errorMessage = <any>error
+    );
+
+
+
   }
   
 

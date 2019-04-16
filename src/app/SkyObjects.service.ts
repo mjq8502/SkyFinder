@@ -5,6 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { ISkyObject } from './SkyObjects';
 import { ISkyPath } from './SkyPath';
 import { ISkyPath2 } from './SkyPaths2';
+import { ITelescope } from './ITelescope';
 @Injectable({
     providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class SkyObjectService {
     private SkyObjectUrl = 'assets/SkyObjects.json';
     private SkyPathUrl = 'assets/SkyPaths.json'
     private SkyPath2Url = 'assets/SkyPaths2.json'
+    private TelescopeUrl = 'assets/TelescopeJson.json'
 
     constructor(private http: HttpClient) { }
 
@@ -33,6 +35,13 @@ export class SkyObjectService {
             tap(data => console.log('All: ' + JSON.stringify(data))), 
             catchError(this.handleError));
     }
+
+    getTelescopes(): Observable<ITelescope[]> {
+        return this.http.get<ITelescope[]>(this.TelescopeUrl).pipe(
+            tap(data => console.log('All: ' + JSON.stringify(data))), 
+            catchError(this.handleError));
+    }
+
 
     private handleError(err: HttpErrorResponse) {
         let errorMessage = '';
