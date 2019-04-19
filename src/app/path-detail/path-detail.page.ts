@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Storage} from '@ionic/storage';
 import { ITelescope } from '../ITelescope';
 import { ISkyObject } from '../SkyObjects';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-path-detail',
@@ -23,17 +24,21 @@ export class PathDetailPage implements OnInit {
   RAMinutesToNextObject: number;
   DecHoursToNextObject: number;
   DecMinutesToNextObject: number;
-  
+  tempHours: number;
+  tempMin: number;
+  RADirection: string;
+  DecDirection: string;
+ 
   
   constructor(private skyObjectService: SkyObjectService,
               private route: ActivatedRoute,
               private storage: Storage  ) { 
-    console.log(this.route.snapshot.paramMap.get('id'));
+    console.log('id param: ' + this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
     console.log("ngOnInit");
-
+    this.getScopes();
     // Or to get a key/value pair
     this.storage.get('Paths').then((val) => {
       console.log('Path ', val);
@@ -41,12 +46,7 @@ export class PathDetailPage implements OnInit {
       this.selectedPath = this.skyPaths2.find(
                               z => z.SkyPathID == +this.route.snapshot.paramMap.get('id'));
       this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex];
-      this.storage.get('Telescopes').then((val) => {
-        console.log('Telescopes ', val);
-        this.telescopes = val;
-        this.selectedTelescope = this.telescopes.find(z => z.TelescopeID == 2);
-      });
-      // ID = 2 is the Celestron C4.5
+      
 
       if (this.selectedPath.SkyObjects.length > 1){  // Make sure there are at least 2 objects
         console.log('Hey 3');
@@ -54,58 +54,67 @@ export class PathDetailPage implements OnInit {
   
         var RATotalSecondsOfNext = (nextObject.RA_Hour * 60 * 60) + (nextObject.RA_Min * 60) + nextObject.RA_Sec;
         var RATotalSecondsOfCurrent = (this.currentObject.RA_Hour * 60 * 60) + (this.currentObject.RA_Min * 60) + this.currentObject.RA_Sec;
-  
-        console.log(RATotalSecondsOfNext);
-        console.log(RATotalSecondsOfCurrent);
-        //console.log(this.selectedTelescope.RA_SecondsPerTurn);
-  
-        this.RAHoursToNextObject = Math.trunc((RATotalSecondsOfNext - RATotalSecondsOfCurrent)/600);
-        var a = (RATotalSecondsOfNext - RATotalSecondsOfCurrent);
-        console.log('a ' + a);
-        var b = a/600;
-        console.log('b ' + b);
-        var c = b - (Math.trunc(b));
-        console.log('c ' + c);
-        var d = Math.round(c*60);
-        console.log('d ' + d);
-        
-        this.RAMinutesToNextObject = d;
-        
-        
-        console.log(this.RAHoursToNextObject);
-        console.log(this.RAMinutesToNextObject);
-  
-        this.DecHoursToNextObject = 15;
-        this.DecMinutesToNextObject = 27;
+
+        console.log('going to convert RA');
+        this.ConvertToHHMM(RATotalSecondsOfNext, RATotalSecondsOfCurrent, this.selectedTelescope.RA_SecondsPerTurn);
+        this.RAHoursToNextObject = this.tempHours;
+        this.RAMinutesToNextObject = this.tempMin;
+        if((RATotalSecondsOfNext - RATotalSecondsOfCurrent) > 0)
+        {
+          this.RADirection = 'CW';
+        }
+        else
+        {
+          this.RADirection = 'CCW';
+        }
+
+
+
+        console.log('going to convert Dec');
+
+        var DecTotalSecondsOfNext = (nextObject.Decl_Hour * 60 * 60) + (nextObject.Decl_Min * 60) + nextObject.Decl_Sec;
+        var DecTotalSecondsOfCurrent = (this.currentObject.Decl_Hour * 60 * 60) + (this.currentObject.Decl_Min * 60) + this.currentObject.Decl_Sec;
+
+        this.ConvertToHHMM(DecTotalSecondsOfNext, DecTotalSecondsOfCurrent, this.selectedTelescope.Decl_SecondsPerTurn);
+        this.DecHoursToNextObject = this.tempHours;
+        this.DecMinutesToNextObject = this.tempMin;
+
+        if((DecTotalSecondsOfNext - DecTotalSecondsOfCurrent) > 0)
+        {
+          this.DecDirection = 'North';
+        }
+        else
+        {
+          this.DecDirection = 'South';
+        }
+
       }
     });
+    console.log('The end');
+  }
 
-    // this.storage.get('Telescopes').then((val) => {
-    //   console.log('Telescopes ', val);
-    //   this.telescopes = val;
-    //   this.selectedTelescope = this.telescopes.find(z => z.TelescopeID == 2);
-    // });
-    // // ID = 2 is the Celestron C4.5
-    // console.log('Hey 2');
-    // console.log(this.selectedPath.SkyObjects.length)
-    // if (this.selectedPath.SkyObjects.length > 1){  // Make sure there are at least 2 objects
-    //   console.log('Hey 3');
-    //   var nextObject = this.selectedPath.SkyObjects[this.currentObjectIndex + 1];
+  async getScopes() {
+    let value = await this.storage.get('Telescopes');
+    console.log('async Telescopes ', value);
+    this.telescopes = value;
+    // ID = 2 is the Celestron C4.5
+    this.selectedTelescope = this.telescopes.find(z => z.TelescopeID == 2);
+  }
 
-    //   var RATotalSecondsOfNext = (nextObject.RA_Hour * 60 * 60) + (nextObject.RA_Min * 60) + nextObject.RA_Sec;
-    //   var RATotalSecondsOfCurrent = (this.currentObject.RA_Hour * 60 * 60) + (this.currentObject.RA_Min * 60) + this.currentObject.RA_Sec;
-
-    //   console.log(RATotalSecondsOfNext);
-    //   console.log(RATotalSecondsOfCurrent);
-
-    //   this.RAHoursToNextObject = Math.trunc((RATotalSecondsOfNext - RATotalSecondsOfCurrent)/60);
-    //   this.RAMinutesToNextObject = Math.trunc(((RATotalSecondsOfNext - RATotalSecondsOfCurrent)%60)*60);
-    //   console.log(this.RAHoursToNextObject);
-    //   console.log(this.RAMinutesToNextObject);
-
-    //   this.DecHoursToNextObject = 15;
-    //   this.DecMinutesToNextObject = 27;
-    // }
+  ConvertToHHMM(TotalSecondsOfNext: number, TotalSecondsOfCurrent: number, SecondsPerTurn: number){
+    console.log('ConvertToHHMM');
+    var a = (TotalSecondsOfNext - TotalSecondsOfCurrent);
+    console.log('a ' + a);
+    var b = a/SecondsPerTurn;
+    console.log('b ' + b);
+    this.tempHours = Math.trunc(b);
+    var c = b - (Math.trunc(b));
+    console.log('c ' + c);
+    var d = Math.round(c*60);
+    console.log('d ' + d);
+    
+    this.tempMin = d;
+    console.log('H ' + this.tempHours + '  M ' + this.tempMin);
   }
 
   button_click_Prev(){
@@ -124,3 +133,4 @@ export class PathDetailPage implements OnInit {
 
 
 }
+
