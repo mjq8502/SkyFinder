@@ -28,6 +28,7 @@ export class PathDetailPage implements OnInit {
   tempMin: number;
   RADirection: string;
   DecDirection: string;
+  reachedFinalObject: boolean = false;
  
   
   constructor(private skyObjectService: SkyObjectService,
@@ -90,6 +91,7 @@ export class PathDetailPage implements OnInit {
 
       }
     });
+    this.reachedFinalObject = false;
     console.log('The end');
   }
 
@@ -107,13 +109,16 @@ export class PathDetailPage implements OnInit {
     console.log('a ' + a);
     var b = a/SecondsPerTurn;
     console.log('b ' + b);
-    this.tempHours = Math.trunc(b);
+
+    this.tempHours = Math.abs(Math.trunc(b));
+
     var c = b - (Math.trunc(b));
     console.log('c ' + c);
     var d = Math.round(c*60);
     console.log('d ' + d);
     
-    this.tempMin = d;
+    this.tempMin = Math.abs(d);
+
     console.log('H ' + this.tempHours + '  M ' + this.tempMin);
   }
 
@@ -121,13 +126,20 @@ export class PathDetailPage implements OnInit {
     if(this.currentObjectIndex > 0){
       this.currentObjectIndex = this.currentObjectIndex - 1;
       this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex];
+      this.reachedFinalObject = false;
     }
   }
 
   button_click_Next(){
-    if (this.currentObjectIndex + 1 < this.selectedPath.SkyObjects.length){
+    if (this.currentObjectIndex + 1 < this.selectedPath.SkyObjects.length)
+    {
       this.currentObjectIndex = this.currentObjectIndex + 1;
       this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex];
+
+      if(this.currentObjectIndex + 1 == this.selectedPath.SkyObjects.length)
+      {
+        this.reachedFinalObject = true;
+      }
     }
   }
 

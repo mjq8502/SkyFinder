@@ -1,31 +1,42 @@
-<ion-header>
+<ion-header class="night-mode">
   <ion-toolbar>
+      <ion-text color="light">
     <ion-title>Path Details</ion-title>
+    </ion-text>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="night-mode">
   <ion-list>
     <ion-item *ngFor="let item of selectedPath.SkyObjects" >
+        <ion-text color="light">
         <ion-icon name="arrow-round-forward" *ngIf="item.ObjectID==currentObject.ObjectID"></ion-icon>
-        {{item.Name}}, id={{item.ObjectID}}
+          {{item.Name}}, id={{item.ObjectID}}
+        </ion-text>
     </ion-item>
   </ion-list>
-  <ion-card>
-      <ion-item>
+  <ion-card >
+      <!-- <ion-item>
           Telescope = {{selectedTelescope.TelescopeName}}
-        </ion-item>
-    <ion-item>
+        </ion-item> -->
+    <!-- <ion-item>
       Current Object = {{currentObject.ObjectID}}, indx = {{currentObjectIndex}},  len = {{selectedPath.SkyObjects.length}}
-    </ion-item>
-      <ion-list>
-          <ion-item>
-            RA:   HH: {{RAHoursToNextObject}},   MM: {{RAMinutesToNextObject}},   {{RADirection}}
+    </ion-item> -->
+    <!-- <div class="night-mode"> -->
+      
+      <ion-list *ngIf="reachedFinalObject == false" >
+          <ion-item class="display-card">
+              <ion-text color="light">
+                RA:   {{RAHoursToNextObject}}:{{RAMinutesToNextObject}}        {{RADirection}}
+              </ion-text>
           </ion-item>
-          <ion-item>
-            Dec:  HH: {{DecHoursToNextObject}},   MM: {{DecMinutesToNextObject}},   {{DecDirection}}
-            </ion-item>
-        </ion-list>
+          <ion-item class="display-card">
+            <ion-text color="light">
+              Dec:  {{DecHoursToNextObject}}:{{DecMinutesToNextObject}}      {{DecDirection}}
+            </ion-text>
+          </ion-item>
+      </ion-list>
+    <!-- </div> -->
   </ion-card>
 </ion-content>
 <ion-footer>

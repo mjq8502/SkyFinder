@@ -7,17 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of skyPaths2" >
-      <!-- <a [routerLink] ="['/Path-Detail']"> -->
-      <!-- <ion-icon [name]="item." slot="start"></ion-icon> -->
       {{item.SkyObjects[0].Name}} -> {{item.SkyObjects[item.SkyObjects.length - 1].Name}}, {{item.SkyObjects.length - 1}} steps
-      <!-- <div class="item-note" slot="end">
-        {{item.Name}}
-      </div> -->
       <ion-button [routerLink]="['/Path-Detail', item.SkyPathID]">Go to detail</ion-button>
-      <!-- </a> -->
     </ion-item>
+  </ion-list>
+</ion-content> -->
+<ion-content>
+  <ion-list>
+      <ion-button expand="block" ion-item  *ngFor="let item of skyPaths2" [routerLink]="['/Path-Detail', item.SkyPathID]">
+        {{item.SkyObjects[0].Name}} -> {{item.SkyObjects[item.SkyObjects.length - 1].Name}} ({{item.SkyObjects.length - 1}})
+      </ion-button>
   </ion-list>
 </ion-content>
