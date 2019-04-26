@@ -1,21 +1,13 @@
-<ion-header>
+<ion-header class="night-mode">
   <ion-toolbar>
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Sky Paths</ion-title>
+      <ion-title>Sky Paths</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of skyPaths2" >
-      {{item.SkyObjects[0].Name}} -> {{item.SkyObjects[item.SkyObjects.length - 1].Name}}, {{item.SkyObjects.length - 1}} steps
-      <ion-button [routerLink]="['/Path-Detail', item.SkyPathID]">Go to detail</ion-button>
-    </ion-item>
-  </ion-list>
-</ion-content> -->
-<ion-content>
+<ion-content class="night-mode">
   <ion-list>
       <ion-button expand="block" ion-item  *ngFor="let item of skyPaths2" [routerLink]="['/Path-Detail', item.SkyPathID]">
         {{item.SkyObjects[0].Name}} -> {{item.SkyObjects[item.SkyObjects.length - 1].Name}} ({{item.SkyObjects.length - 1}})
