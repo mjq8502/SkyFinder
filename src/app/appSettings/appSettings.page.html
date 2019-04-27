@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group>
+      <ion-list-header>
+        Display Mode
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Day-Mode</ion-label>
+        <ion-radio value="daymode"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Night-Mode</ion-label>
+        <ion-radio value="nightmode"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-button expand="block" color="medium" (click)="changeTheme('autumn')">Autumn</ion-button>
+  <ion-button expand="block" color="medium" (click)="changeTheme('night')">Dark</ion-button>
+  <ion-button expand="block" color="medium" (click)="changeTheme('neon')">Neon</ion-button>
+  <ion-button expand="block" color="medium" (click)="changeTheme('')">Default</ion-button>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
+</ion-content>

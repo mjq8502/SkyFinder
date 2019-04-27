@@ -32,8 +32,8 @@ export class AppComponent {
       icon: 'list'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'App Settings',
+      url: '/appSettings',
       icon: 'list'
     }
   ];

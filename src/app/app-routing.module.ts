@@ -12,8 +12,8 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomePageModule'
   },
   {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    path: 'appSettings',
+    loadChildren: './appSettings/appSettings.module#AppSettingsPageModule'
   },
   { path: 'telescopes', loadChildren: './telescopes/telescopes.module#TelescopesPageModule' },
   { path: 'sky-objects', loadChildren: './sky-objects/sky-objects.module#SkyObjectsPageModule' },
