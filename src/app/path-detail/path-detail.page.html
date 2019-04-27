@@ -1,4 +1,4 @@
-<ion-header class="night-mode">
+<ion-header>
   <ion-toolbar>
       <ion-text color="light">
     <ion-title>Path Details</ion-title>
@@ -6,51 +6,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="night-mode">
+<ion-content>
   <ion-list>
     <ion-item *ngFor="let item of selectedPath.SkyObjects" >
-        <ion-text color="light">
         <ion-icon name="arrow-round-forward" *ngIf="item.ObjectID==currentObject.ObjectID"></ion-icon>
           {{item.Name}}, id={{item.ObjectID}}
-        </ion-text>
     </ion-item>
   </ion-list>
   <ion-card >
-      <!-- <ion-item>
-          Telescope = {{selectedTelescope.TelescopeName}}
-        </ion-item> -->
-    <!-- <ion-item>
-      Current Object = {{currentObject.ObjectID}}, indx = {{currentObjectIndex}},  len = {{selectedPath.SkyObjects.length}}
-    </ion-item> -->
-    <!-- <div class="night-mode"> -->
       
       <ion-list *ngIf="reachedFinalObject == false" >
           <ion-item class="display-card">
-              <ion-text color="light">
                 RA:   {{RAHoursToNextObject}}:{{RAMinutesToNextObject}}        {{RADirection}}
-              </ion-text>
           </ion-item>
           <ion-item class="display-card">
-            <ion-text color="light">
               Dec:  {{DecHoursToNextObject}}:{{DecMinutesToNextObject}}      {{DecDirection}}
-            </ion-text>
           </ion-item>
       </ion-list>
-    <!-- </div> -->
+
   </ion-card>
 </ion-content>
 <ion-footer>
     <ion-row center >
         <ion-col text-center>
           <ion-button (click)="button_click_Prev()">
-              <ion-text color="light">
             Prev
-            </ion-text>
           </ion-button>
           <ion-button  (click)="button_click_Next()">
-              <ion-text color="light">
             Next
-            </ion-text>
           </ion-button>
         </ion-col>
       </ion-row>

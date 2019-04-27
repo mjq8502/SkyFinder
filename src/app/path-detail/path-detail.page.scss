@@ -1,24 +1,3 @@
 .display-card {
     font-size: 3em;
   }
-
-  ion-content{
-
-    //--ion-background-color:#111D12;
-    --ion-background-color: var(--ion-color-dark);
-}
-ion-footer{
-
-  //--ion-background-color:#111D12;
-  --ion-background-color: var(--ion-color-dark);
-}
-/* Set the color on all ion-button elements */
-ion-button {
-  --background: var(--ion-color-dark-tint);
-}
-.night-mode {
-
-  //background-color:#111D12;
-  --ion-background-color: var(--ion-color-dark);
-  --ion-color: var(--ion-color-dark-contrast);
-}

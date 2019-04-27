@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../settings.service';
 import { ThemeService } from '../theme.service';
+import { stringify } from '@angular/core/src/render3/util';
 
 const themes = {
   autumn: {
@@ -37,6 +38,7 @@ const themes = {
 export class AppSettingsPage implements OnInit {
   private selectedItem: any;
   selectedTheme: String;
+  private choice: String;
 
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor(private settings: SettingsService,
@@ -48,21 +50,10 @@ export class AppSettingsPage implements OnInit {
   ngOnInit() {
   }
 
-  changeTheme(name) {
-    this.theme.setTheme(themes[name]);
+  changeTheme(event) {
+    //console.log(name);
+    this.theme.setTheme(themes[event.detail.value]);
   }
 
-  // toggleAppTheme() {
-  //   console.log('toggle current = ' + this.selectedTheme);
-  //   if (this.selectedTheme == 'dark-theme') {
-  //     this.settings.setActiveTheme('light-theme');
-  //   } else {
-  //     this.settings.setActiveTheme('dark-theme');
-  //     console.log('toggle current = ' + this.selectedTheme);
-  //   }
-  // }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+
 }
