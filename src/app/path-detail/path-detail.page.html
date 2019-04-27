@@ -9,20 +9,20 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of selectedPath.SkyObjects" >
-        <ion-icon name="arrow-round-forward" *ngIf="item.ObjectID==currentObject.ObjectID"></ion-icon>
-          {{item.Name}}, id={{item.ObjectID}}
+        {{item.Name}}, id={{item.ObjectID}}
+        <ion-icon name="arrow-round-back" *ngIf="item.ObjectID==currentObject.ObjectID"></ion-icon>
     </ion-item>
   </ion-list>
   <ion-card >
       
       <ion-list *ngIf="reachedFinalObject == false" >
-          <ion-item class="display-card">
-                RA:   {{RAHoursToNextObject}}:{{RAMinutesToNextObject}}        {{RADirection}}
-          </ion-item>
-          <ion-item class="display-card">
-              Dec:  {{DecHoursToNextObject}}:{{DecMinutesToNextObject}}      {{DecDirection}}
-          </ion-item>
-      </ion-list>
+        <ion-item class="display-card">
+            RA :   {{RAString}}      {{RADirection}}
+        </ion-item>
+        <ion-item class="display-card">
+            Dec:  {{DecString}}      {{DecDirection}}
+        </ion-item>
+    </ion-list>
 
   </ion-card>
 </ion-content>

@@ -29,6 +29,8 @@ export class PathDetailPage implements OnInit {
   RADirection: string;
   DecDirection: string;
   reachedFinalObject: boolean = false;
+  RAString: string;
+  DecString: string;
  
   
   constructor(private skyObjectService: SkyObjectService,
@@ -69,8 +71,13 @@ export class PathDetailPage implements OnInit {
           this.RADirection = 'CCW';
         }
 
+        var x = (this.tempHours*3600) + (this.tempMin * 60);
+        var date = new Date(null);
+        date.setSeconds(x); // specify value for SECONDS here
+        this.RAString = date.toISOString().substr(11, 5);
+        console.log('timestring ' + this.RAString)
 
-
+        
         console.log('going to convert Dec');
 
         var DecTotalSecondsOfNext = (nextObject.Decl_Hour * 60 * 60) + (nextObject.Decl_Min * 60) + nextObject.Decl_Sec;
@@ -90,6 +97,13 @@ export class PathDetailPage implements OnInit {
         }
 
       }
+
+      var x = (this.tempHours*3600) + (this.tempMin * 60);
+      var date = new Date(null);
+      date.setSeconds(x); // specify value for SECONDS here
+      this.DecString = date.toISOString().substr(11, 5);
+      console.log('timestring ' + this.DecString)
+
     });
     this.reachedFinalObject = false;
     console.log('The end');
@@ -120,6 +134,15 @@ export class PathDetailPage implements OnInit {
     this.tempMin = Math.abs(d);
 
     console.log('H ' + this.tempHours + '  M ' + this.tempMin);
+
+   // var x = new Date(((this.tempHours*3600) + (this.tempMin * 60) * 1000)).toISOString().substr(11, 8);
+    
+    var x = (this.tempHours*3600) + (this.tempMin * 60);
+    var date = new Date(null);
+    date.setSeconds(x); // specify value for SECONDS here
+    var timeString = date.toISOString().substr(11, 8);
+    console.log('timestring ' + timeString)
+  
   }
 
   button_click_Prev(){
