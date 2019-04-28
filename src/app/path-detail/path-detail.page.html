@@ -1,40 +1,85 @@
 <ion-header>
   <ion-toolbar>
-      <ion-text color="light">
-    <ion-title>Path Details</ion-title>
+    <ion-text color="light">
+      <ion-title>Path Details</ion-title>
     </ion-text>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of selectedPath.SkyObjects" >
-        {{item.Name}}, id={{item.ObjectID}}
-        <ion-icon name="arrow-round-back" *ngIf="item.ObjectID==currentObject.ObjectID"></ion-icon>
+
+    <ion-item *ngFor="let item of selectedPath.SkyObjects">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="arrow-round-forward" *ngIf="item.ObjectID==currentObject.ObjectID"></ion-icon>
+          </ion-col>
+          <ion-col size="11">
+            {{item.Name}}
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
     </ion-item>
+
   </ion-list>
-  <ion-card >
-      
-      <ion-list *ngIf="reachedFinalObject == false" >
-        <ion-item class="display-card">
-            RA :   {{RAString}}      {{RADirection}}
-        </ion-item>
-        <ion-item class="display-card">
-            Dec:  {{DecString}}      {{DecDirection}}
-        </ion-item>
+  <ion-card>
+
+    <ion-list *ngIf="reachedFinalObject == false">
+      <ion-grid>
+
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-item class="display-card">RA:</ion-item>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-item class="display-card">{{RAString}}</ion-item>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-item class="display-card">{{RADirection}}</ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-item class="display-card">Dec:</ion-item>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-item class="display-card">{{DecString}}</ion-item>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-item class="display-card">{{DecDirection}}</ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
     </ion-list>
 
   </ion-card>
 </ion-content>
 <ion-footer>
-    <ion-row center >
-        <ion-col text-center>
-          <ion-button (click)="button_click_Prev()">
-            Prev
-          </ion-button>
-          <ion-button  (click)="button_click_Next()">
-            Next
-          </ion-button>
-        </ion-col>
-      </ion-row>
+  <ion-row center>
+    <ion-col text-center>
+      <ion-button (click)="button_click_Prev()">
+        Prev
+      </ion-button>
+      <ion-button (click)="button_click_Next()">
+        Next
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-footer>
