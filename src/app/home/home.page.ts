@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SettingsService } from '../settings.service';
+//import { SettingsService } from '../settings.service';
 import { ThemeService } from '../theme.service';
 
 // const themes = {
@@ -37,7 +37,7 @@ import { ThemeService } from '../theme.service';
 export class HomePage {
   //selectedTheme: String;
 
-  constructor(private settings: SettingsService,
+  constructor(//private settings: SettingsService,
     private theme: ThemeService){
     //this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
   }

@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+// import { Injectable } from '@angular/core';
+// import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class SettingsService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class SettingsService {
 
-  private theme: BehaviorSubject<String>;
+//   private theme: BehaviorSubject<String>;
 
-  constructor() { 
-    this.theme = new BehaviorSubject('dark-theme');
-  }
+//   constructor() { 
+//     this.theme = new BehaviorSubject('dark-theme');
+//   }
 
-  setActiveTheme(val) {
-    console.log('setActive val = ' + val)
-    this.theme.next(val);
-  }
+//   setActiveTheme(val) {
+//     console.log('setActive val = ' + val)
+//     this.theme.next(val);
+//   }
 
-  getActiveTheme() {
-    return this.theme.asObservable();
-  }
-}
+//   getActiveTheme() {
+//     return this.theme.asObservable();
+//   }
+// }

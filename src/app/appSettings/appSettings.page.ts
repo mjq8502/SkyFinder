@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../settings.service';
+//import { SettingsService } from '../settings.service';
 import { ThemeService } from '../theme.service';
 import { stringify } from '@angular/core/src/render3/util';
 
@@ -41,9 +41,9 @@ export class AppSettingsPage implements OnInit {
   private choice: String;
 
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(private settings: SettingsService,
+  constructor(//private settings: SettingsService,
     private theme: ThemeService) {
-      this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
+      //this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
 
   }
 
