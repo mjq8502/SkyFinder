@@ -24,6 +24,7 @@ export class PathDetailPage implements OnInit {
   RAMinutesToNextObject: number;
   DecHoursToNextObject: number;
   DecMinutesToNextObject: number;
+
   tempHours: number;
   tempMin: number;
   RADirection: string;
@@ -71,11 +72,7 @@ export class PathDetailPage implements OnInit {
           this.RADirection = 'CCW';
         }
 
-        var x = (this.tempHours*3600) + (this.tempMin * 60);
-        var date = new Date(null);
-        date.setSeconds(x); // specify value for SECONDS here
-        this.RAString = date.toISOString().substr(11, 5);
-        console.log('timestring ' + this.RAString)
+        this.RAString = this.HHMM_Display_String(this.tempHours, this.tempMin);
 
         
         console.log('going to convert Dec');
@@ -98,11 +95,7 @@ export class PathDetailPage implements OnInit {
 
       }
 
-      var x = (this.tempHours*3600) + (this.tempMin * 60);
-      var date = new Date(null);
-      date.setSeconds(x); // specify value for SECONDS here
-      this.DecString = date.toISOString().substr(11, 5);
-      console.log('timestring ' + this.DecString)
+      this.DecString = this.HHMM_Display_String(this.tempHours, this.tempMin);
 
     });
     this.reachedFinalObject = false;
@@ -135,15 +128,18 @@ export class PathDetailPage implements OnInit {
 
     console.log('H ' + this.tempHours + '  M ' + this.tempMin);
 
-   // var x = new Date(((this.tempHours*3600) + (this.tempMin * 60) * 1000)).toISOString().substr(11, 8);
-    
+  
+  }
+
+  HHMM_Display_String(tempHours: number, tempMin: number):string {
     var x = (this.tempHours*3600) + (this.tempMin * 60);
     var date = new Date(null);
     date.setSeconds(x); // specify value for SECONDS here
     var timeString = date.toISOString().substr(11, 8);
-    console.log('timestring ' + timeString)
-  
+    console.log('timestring ' + timeString);
+    return timeString;
   }
+
 
   button_click_Prev(){
     if(this.currentObjectIndex > 0){

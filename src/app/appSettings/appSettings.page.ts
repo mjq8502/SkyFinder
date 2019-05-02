@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { SettingsService } from '../settings.service';
 import { ThemeService } from '../theme.service';
 import { stringify } from '@angular/core/src/render3/util';
 
@@ -36,24 +35,41 @@ const themes = {
   styleUrls: ['appSettings.page.scss']
 })
 export class AppSettingsPage implements OnInit {
-  private selectedItem: any;
-  selectedTheme: String;
-  private choice: String;
+  //private selectedItem: any;
+  currentTheme: any;
+  //private choice: String;
 
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(//private settings: SettingsService,
-    private theme: ThemeService) {
-      //this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
-
+  constructor(private theme: ThemeService) {
+    console.log('why call the constructor so much');
   }
 
   ngOnInit() {
+    console.log('appSettingsPage on init');
+    console.log('theme says is default set = '  + this.theme.isDefaultThemeSet)
+    console.log('on init currentTheme 1 = ' + this.currentTheme);
+    this.currentTheme = this.theme.themecurrentTheme;
+    console.log('on init currentTheme 2 = ' + this.currentTheme);
+    console.log('theme service current = ' + this.theme);
+    if(this.theme.themeSetCounter == 1){
+      console.log('maybe set radio here now.');
+      this.currentTheme = 'autumn';
+    }
+    else {
+      console.log('dont touch radio');
+    }
   }
 
   changeTheme(event) {
-    //console.log(name);
+    console.log('edv = ' + event);
     this.theme.setTheme(themes[event.detail.value]);
-  }
+    this.currentTheme = event.detail.value;
+    this.theme.themecurrentTheme = this.currentTheme;
+    console.log('change theme currentTheme = ' + this.currentTheme);
+    console.log('appsetting  theme currentTheme = ' + this.theme.themecurrentTheme);
+    
+   }
 
+  
 
 }

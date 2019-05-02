@@ -7,6 +7,10 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class ThemeService {
+  isDefaultThemeSet: boolean = false;
+  themeSetCounter: number = 0;
+  themecurrentTheme: any;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private storage: Storage
@@ -18,9 +22,16 @@ export class ThemeService {
 
   // Override all global variables with a new theme
   setTheme(theme) {
+    console.log('set theme ' + theme);
+    //this.currentTheme = theme.value;
     const cssText = CSSTextGenerator(theme);
     this.setGlobalCSS(cssText);
     this.storage.set('theme', cssText);
+    this.isDefaultThemeSet = true;
+    console.log('set theme is default is now  ' + this.isDefaultThemeSet);
+    this.themeSetCounter = this.themeSetCounter + 1;
+    console.log('themeSetCounter ' + this.themeSetCounter);
+
   }
 
   // Define a single CSS variable

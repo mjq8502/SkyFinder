@@ -11,7 +11,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-radio-group (ionChange) = "changeTheme($event)">
+    <ion-radio-group (ionChange) = "changeTheme($event)" [(ngModel)]="currentTheme">
       <ion-list-header>
         Display Mode
       </ion-list-header>

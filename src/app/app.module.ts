@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router'
 import { PathDetailPage } from './path-detail/path-detail.page';
 import { IonicStorageModule} from '@ionic/storage';
-//import { SettingsService } from './settings.service';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { IonicStorageModule} from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }//,
-    //SettingsService
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
