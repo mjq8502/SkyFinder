@@ -28,9 +28,9 @@ export class ThemeService {
     this.setGlobalCSS(cssText);
     this.storage.set('theme', cssText);
     this.isDefaultThemeSet = true;
-    console.log('set theme is default is now  ' + this.isDefaultThemeSet);
+    console.log('theme.service  set theme is default is now  ' + this.isDefaultThemeSet);
     this.themeSetCounter = this.themeSetCounter + 1;
-    console.log('themeSetCounter ' + this.themeSetCounter);
+    console.log('theme.service  themeSetCounter ' + this.themeSetCounter);
 
   }
 

@@ -37,8 +37,9 @@ export class HomePage {
 
   constructor(private theme: ThemeService){
     console.log('Home page is defaulttheme = ' + theme.isDefaultThemeSet);
-    if(theme.isDefaultThemeSet == false)
+    if(this.theme.themeSetCounter == 0)  //if(theme.isDefaultThemeSet == false)
     {
+      console.log('home page Themesetcounter = ' + this.theme.themeSetCounter);
       this.theme.setTheme(themes.autumn);
     }
   }

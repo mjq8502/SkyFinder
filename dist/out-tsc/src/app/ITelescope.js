@@ -1,0 +1,1 @@
+//# sourceMappingURL=ITelescope.js.map
