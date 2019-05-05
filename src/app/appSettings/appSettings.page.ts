@@ -12,6 +12,14 @@ const themes = {
     dark: '#B89876'
   },
   night: {
+    primary: '#495867',
+    secondary: '#FCFF6C',
+    tertiary: '#FE5F55',
+    medium: '#BCC2C7',
+    dark: '#F7F7FF',
+    light: '#000000'
+  },
+  original_night: {
     primary: '#8CBA80',
     secondary: '#FCFF6C',
     tertiary: '#FE5F55',

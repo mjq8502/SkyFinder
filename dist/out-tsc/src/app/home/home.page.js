@@ -11,21 +11,29 @@ var themes = {
         dark: '#B89876'
     },
     night: {
+        primary: '#495867',
+        secondary: '#FCFF6C',
+        tertiary: '#FE5F55',
+        medium: '#BCC2C7',
+        dark: '#F7F7FF',
+        light: '#000000'
+      },
+      original_night: {
         primary: '#8CBA80',
         secondary: '#FCFF6C',
         tertiary: '#FE5F55',
         medium: '#BCC2C7',
         dark: '#F7F7FF',
         light: '#495867'
-    },
-    neon: {
+      },
+      neon: {
         primary: '#39BFBD',
         secondary: '#4CE0B3',
         tertiary: '#FF5E79',
         light: '#F4EDF2',
         medium: '#B682A5',
         dark: '#34162A'
-    }
+      }
 };
 var HomePage = /** @class */ (function () {
     function HomePage(theme) {

@@ -135,7 +135,7 @@ export class PathDetailPage implements OnInit {
     var x = (this.tempHours*3600) + (this.tempMin * 60);
     var date = new Date(null);
     date.setSeconds(x); // specify value for SECONDS here
-    var timeString = date.toISOString().substr(11, 8);
+    var timeString = date.toISOString().substr(11, 5);
     console.log('timestring ' + timeString);
     return timeString;
   }

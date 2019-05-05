@@ -11,6 +11,14 @@ const themes = {
     dark: '#B89876'
   },
   night: {
+    primary: '#495867',
+    secondary: '#FCFF6C',
+    tertiary: '#FE5F55',
+    medium: '#BCC2C7',
+    dark: '#F7F7FF',
+    light: '#000000'
+  },
+  original_night: {
     primary: '#8CBA80',
     secondary: '#FCFF6C',
     tertiary: '#FE5F55',
@@ -37,11 +45,11 @@ export class HomePage {
 
   constructor(private theme: ThemeService){
     console.log('Home page is defaulttheme = ' + theme.isDefaultThemeSet);
-    if(this.theme.themeSetCounter == 0)  //if(theme.isDefaultThemeSet == false)
-    {
-      console.log('home page Themesetcounter = ' + this.theme.themeSetCounter);
-      this.theme.setTheme(themes.autumn);
-    }
+    // if(this.theme.themeSetCounter == 0)  //if(theme.isDefaultThemeSet == false)
+    // {
+    //   console.log('home page Themesetcounter = ' + this.theme.themeSetCounter);
+    //   this.theme.setTheme(themes.autumn);
+    // }
   }
 
 }
