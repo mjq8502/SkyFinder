@@ -17,7 +17,7 @@ const themes = {
     secondary: '#FCFF6C',
     tertiary: '#FE5F55',
     medium: '#BCC2C7',
-    dark: '#F7F7FF',
+    dark: '#7b8084',
     light: '#000000'
   },
   original_night: {
@@ -44,7 +44,7 @@ const themes = {
 export class ThemeService {
   isDefaultThemeSet: boolean = false;
   themeSetCounter: number = 0;
-  themecurrentTheme: any;
+  currentThemeName: string;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,

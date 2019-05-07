@@ -15,7 +15,7 @@ const themes = {
     secondary: '#FCFF6C',
     tertiary: '#FE5F55',
     medium: '#BCC2C7',
-    dark: '#F7F7FF',
+    dark: '#7b8084',
     light: '#000000'
   },
   original_night: {

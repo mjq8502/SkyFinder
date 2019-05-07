@@ -51,51 +51,52 @@ export class PathDetailPage implements OnInit {
                               z => z.SkyPathID == +this.route.snapshot.paramMap.get('id'));
       this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex];
       
+      this.calculateKnobTurns();
 
-      if (this.selectedPath.SkyObjects.length > 1){  // Make sure there are at least 2 objects
-        console.log('Hey 3');
-        var nextObject = this.selectedPath.SkyObjects[this.currentObjectIndex + 1];
+      // if (this.selectedPath.SkyObjects.length > 1){  // Make sure there are at least 2 objects
+      //   console.log('Hey 3');
+      //   var nextObject = this.selectedPath.SkyObjects[this.currentObjectIndex + 1];
   
-        var RATotalSecondsOfNext = (nextObject.RA_Hour * 60 * 60) + (nextObject.RA_Min * 60) + nextObject.RA_Sec;
-        var RATotalSecondsOfCurrent = (this.currentObject.RA_Hour * 60 * 60) + (this.currentObject.RA_Min * 60) + this.currentObject.RA_Sec;
+      //   var RATotalSecondsOfNext = (nextObject.RA_Hour * 60 * 60) + (nextObject.RA_Min * 60) + nextObject.RA_Sec;
+      //   var RATotalSecondsOfCurrent = (this.currentObject.RA_Hour * 60 * 60) + (this.currentObject.RA_Min * 60) + this.currentObject.RA_Sec;
 
-        console.log('going to convert RA');
-        this.ConvertToHHMM(RATotalSecondsOfNext, RATotalSecondsOfCurrent, this.selectedTelescope.RA_SecondsPerTurn);
-        this.RAHoursToNextObject = this.tempHours;
-        this.RAMinutesToNextObject = this.tempMin;
-        if((RATotalSecondsOfNext - RATotalSecondsOfCurrent) > 0)
-        {
-          this.RADirection = 'CW';
-        }
-        else
-        {
-          this.RADirection = 'CCW';
-        }
+      //   console.log('going to convert RA');
+      //   this.ConvertToHHMM(RATotalSecondsOfNext, RATotalSecondsOfCurrent, this.selectedTelescope.RA_SecondsPerTurn);
+      //   this.RAHoursToNextObject = this.tempHours;
+      //   this.RAMinutesToNextObject = this.tempMin;
+      //   if((RATotalSecondsOfNext - RATotalSecondsOfCurrent) > 0)
+      //   {
+      //     this.RADirection = 'CW';
+      //   }
+      //   else
+      //   {
+      //     this.RADirection = 'CCW';
+      //   }
 
-        this.RAString = this.HHMM_Display_String(this.tempHours, this.tempMin);
+      //   this.RAString = this.HHMM_Display_String(this.tempHours, this.tempMin);
 
         
-        console.log('going to convert Dec');
+      //   console.log('going to convert Dec');
 
-        var DecTotalSecondsOfNext = (nextObject.Decl_Hour * 60 * 60) + (nextObject.Decl_Min * 60) + nextObject.Decl_Sec;
-        var DecTotalSecondsOfCurrent = (this.currentObject.Decl_Hour * 60 * 60) + (this.currentObject.Decl_Min * 60) + this.currentObject.Decl_Sec;
+      //   var DecTotalSecondsOfNext = (nextObject.Decl_Hour * 60 * 60) + (nextObject.Decl_Min * 60) + nextObject.Decl_Sec;
+      //   var DecTotalSecondsOfCurrent = (this.currentObject.Decl_Hour * 60 * 60) + (this.currentObject.Decl_Min * 60) + this.currentObject.Decl_Sec;
 
-        this.ConvertToHHMM(DecTotalSecondsOfNext, DecTotalSecondsOfCurrent, this.selectedTelescope.Decl_SecondsPerTurn);
-        this.DecHoursToNextObject = this.tempHours;
-        this.DecMinutesToNextObject = this.tempMin;
+      //   this.ConvertToHHMM(DecTotalSecondsOfNext, DecTotalSecondsOfCurrent, this.selectedTelescope.Decl_SecondsPerTurn);
+      //   this.DecHoursToNextObject = this.tempHours;
+      //   this.DecMinutesToNextObject = this.tempMin;
 
-        if((DecTotalSecondsOfNext - DecTotalSecondsOfCurrent) > 0)
-        {
-          this.DecDirection = 'North';
-        }
-        else
-        {
-          this.DecDirection = 'South';
-        }
+      //   if((DecTotalSecondsOfNext - DecTotalSecondsOfCurrent) > 0)
+      //   {
+      //     this.DecDirection = 'North';
+      //   }
+      //   else
+      //   {
+      //     this.DecDirection = 'South';
+      //   }
 
-      }
+      // }
 
-      this.DecString = this.HHMM_Display_String(this.tempHours, this.tempMin);
+      // this.DecString = this.HHMM_Display_String(this.tempHours, this.tempMin);
 
     });
     this.reachedFinalObject = false;
@@ -146,6 +147,7 @@ export class PathDetailPage implements OnInit {
       this.currentObjectIndex = this.currentObjectIndex - 1;
       this.currentObject = this.selectedPath.SkyObjects[this.currentObjectIndex];
       this.reachedFinalObject = false;
+      this.calculateKnobTurns();
     }
   }
 
@@ -159,7 +161,57 @@ export class PathDetailPage implements OnInit {
       {
         this.reachedFinalObject = true;
       }
+      this.calculateKnobTurns();
     }
+  }
+
+  calculateKnobTurns(){
+    console.log('calculateKnobTurns Start');
+
+      if (this.selectedPath.SkyObjects.length > 1){  // Make sure there are at least 2 objects
+      console.log('Hey 3');
+      var nextObject = this.selectedPath.SkyObjects[this.currentObjectIndex + 1];
+
+      var RATotalSecondsOfNext = (nextObject.RA_Hour * 60 * 60) + (nextObject.RA_Min * 60) + nextObject.RA_Sec;
+      var RATotalSecondsOfCurrent = (this.currentObject.RA_Hour * 60 * 60) + (this.currentObject.RA_Min * 60) + this.currentObject.RA_Sec;
+
+      console.log('going to convert RA');
+      this.ConvertToHHMM(RATotalSecondsOfNext, RATotalSecondsOfCurrent, this.selectedTelescope.RA_SecondsPerTurn);
+      this.RAHoursToNextObject = this.tempHours;
+      this.RAMinutesToNextObject = this.tempMin;
+      if((RATotalSecondsOfNext - RATotalSecondsOfCurrent) > 0)
+      {
+        this.RADirection = 'CW';
+      }
+      else
+      {
+        this.RADirection = 'CCW';
+      }
+
+      this.RAString = this.HHMM_Display_String(this.tempHours, this.tempMin);
+
+      
+      console.log('going to convert Dec');
+
+      var DecTotalSecondsOfNext = (nextObject.Decl_Hour * 60 * 60) + (nextObject.Decl_Min * 60) + nextObject.Decl_Sec;
+      var DecTotalSecondsOfCurrent = (this.currentObject.Decl_Hour * 60 * 60) + (this.currentObject.Decl_Min * 60) + this.currentObject.Decl_Sec;
+
+      this.ConvertToHHMM(DecTotalSecondsOfNext, DecTotalSecondsOfCurrent, this.selectedTelescope.Decl_SecondsPerTurn);
+      this.DecHoursToNextObject = this.tempHours;
+      this.DecMinutesToNextObject = this.tempMin;
+
+      if((DecTotalSecondsOfNext - DecTotalSecondsOfCurrent) > 0)
+      {
+        this.DecDirection = 'North';
+      }
+      else
+      {
+        this.DecDirection = 'South';
+      }
+
+    }
+
+    this.DecString = this.HHMM_Display_String(this.tempHours, this.tempMin);
   }
 
 

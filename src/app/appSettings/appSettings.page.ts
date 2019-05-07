@@ -16,7 +16,7 @@ const themes = {
     secondary: '#FCFF6C',
     tertiary: '#FE5F55',
     medium: '#BCC2C7',
-    dark: '#F7F7FF',
+    dark: '#7b8084',
     light: '#000000'
   },
   original_night: {
@@ -56,15 +56,16 @@ export class AppSettingsPage implements OnInit {
     console.log('appSettingsPage on init');
     console.log('theme says is default set = '  + this.theme.isDefaultThemeSet)
     console.log('on init currentTheme 1 = ' + this.currentTheme);
-    this.currentTheme = this.theme.themecurrentTheme;
+    this.currentTheme = this.theme.currentThemeName;
     console.log('on init currentTheme 2 = ' + this.currentTheme);
     console.log('theme service current = ' + this.theme);
-    if(this.theme.themeSetCounter == 1){
-      console.log('maybe set radio here now.');
-      this.currentTheme = 'autumn';
+    if(this.theme.currentThemeName){ //  if(this.theme.themeSetCounter == 1){
+      console.log('dont touch radio buttons.');
     }
     else {
-      console.log('dont touch radio');
+      this.theme.setTheme(themes.autumn);
+      this.currentTheme = 'autumn';
+      console.log('set theme to autumn');
     }
   }
 
@@ -72,9 +73,9 @@ export class AppSettingsPage implements OnInit {
     console.log('edv = ' + event);
     this.theme.setTheme(themes[event.detail.value]);
     this.currentTheme = event.detail.value;
-    this.theme.themecurrentTheme = this.currentTheme;
+    this.theme.currentThemeName = this.currentTheme;
     console.log('change theme currentTheme = ' + this.currentTheme);
-    console.log('appsetting  theme currentTheme = ' + this.theme.themecurrentTheme);
+    console.log('appsetting  theme currentTheme = ' + this.theme.currentThemeName);
     
    }
 

@@ -1,32 +1,83 @@
 [
-{
-"ObjectID": 1,
-"Name": "27 Cassiopeiae",
-"RA_Hour": 0,
-"RA_Min": 57,
-"RA_Sec": 52,
-"Decl_Hour": 60,
-"Decl_Min": 49,
-"Decl_Sec": 20
-},
-{
-"ObjectID": 2,
-"Name": "37 Cassiopeiae",
-"RA_Hour": 1,
-"RA_Min": 27,
-"RA_Sec": 4,
-"Decl_Hour": 60,
-"Decl_Min": 20,
-"Decl_Sec": 11
-},
-{
-"ObjectID": 3,
-"Name": "M103",
-"RA_Hour": 1,
-"RA_Min": 45,
-"RA_Sec": 19,
-"Decl_Hour": 61,
-"Decl_Min": 58,
-"Decl_Sec": 49
-}
-]
+    {
+    "ObjectID": 1,
+    "Name": "27-Gamma Cassiopeiae",
+    "RA_Hour": 0,
+    "RA_Min": 57,
+    "RA_Sec": 52,
+    "Decl_Hour": 60,
+    "Decl_Min": 49,
+    "Decl_Sec": 20
+    },
+    {
+    "ObjectID": 2,
+    "Name": "37-Delta Cassiopeiae",
+    "RA_Hour": 1,
+    "RA_Min": 27,
+    "RA_Sec": 4,
+    "Decl_Hour": 60,
+    "Decl_Min": 20,
+    "Decl_Sec": 11
+    },
+    {
+    "ObjectID": 3,
+    "Name": "M103",
+    "RA_Hour": 1,
+    "RA_Min": 45,
+    "RA_Sec": 19,
+    "Decl_Hour": 61,
+    "Decl_Min": 58,
+    "Decl_Sec": 49
+    },
+    {
+    "ObjectID": 4,
+    "Name": "Dubhe",
+    "RA_Hour": 11,
+    "RA_Min": 4,
+    "RA_Sec": 47,
+    "Decl_Hour": 61,
+    "Decl_Min": 39,
+    "Decl_Sec": 17
+    },
+    {
+    "ObjectID": 5,
+    "Name": "HIP 52877",
+    "RA_Hour": 10,
+    "RA_Min": 49,
+    "RA_Sec": 58,
+    "Decl_Hour": 65,
+    "Decl_Min": 2,
+    "Decl_Sec": 16
+    },
+    {
+    "ObjectID": 6,
+    "Name": "HIP 51782",
+    "RA_Hour": 10,
+    "RA_Min": 36,
+    "RA_Sec": 5,
+    "Decl_Hour": 68,
+    "Decl_Min": 36,
+    "Decl_Sec": 53
+    },
+    {
+    "ObjectID": 7,
+    "Name": "HIP 50685",
+    "RA_Hour": 10,
+    "RA_Min": 22,
+    "RA_Sec": 21,
+    "Decl_Hour": 68,
+    "Decl_Min": 39,
+    "Decl_Sec": 26
+    },
+    {
+    "ObjectID": 8,
+    "Name": "M81",
+    "RA_Hour": 9,
+    "RA_Min": 56,
+    "RA_Sec": 58,
+    "Decl_Hour": 68,
+    "Decl_Min": 58,
+    "Decl_Sec": 55
+    }
+    ]
+    

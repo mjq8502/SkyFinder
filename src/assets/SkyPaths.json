@@ -10,5 +10,9 @@
     {
     "SkyPathID":3,
     "SkyObjectIDs":[1,2,3]
+    },
+    {
+    "SkyPathID":4,
+    "SkyObjectIDs":[4,5,6,7,8]
     }
 ]
