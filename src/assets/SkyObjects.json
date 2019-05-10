@@ -30,14 +30,14 @@
     "Decl_Sec": 49
     },
     {
-    "ObjectID": 4,
-    "Name": "Dubhe",
-    "RA_Hour": 11,
-    "RA_Min": 4,
-    "RA_Sec": 47,
-    "Decl_Hour": 61,
-    "Decl_Min": 39,
-    "Decl_Sec": 17
+        "ObjectID": 4,
+        "Name": "Dubhe",
+        "RA_Hour": 11,
+        "RA_Min": 4,
+        "RA_Sec": 47,
+        "Decl_Hour": 61,
+        "Decl_Min": 39,
+        "Decl_Sec": 17
     },
     {
     "ObjectID": 5,
@@ -78,6 +78,55 @@
     "Decl_Hour": 68,
     "Decl_Min": 58,
     "Decl_Sec": 55
-    }
+    },
+    {
+    "ObjectID": 9,
+    "Name": "Vega",
+    "RA_Hour": 18,
+    "RA_Min": 36,
+    "RA_Sec": 56,
+    "Decl_Hour": 38,
+    "Decl_Min": 47,
+    "Decl_Sec": 1
+    },
+    {
+    "ObjectID": 10,
+    "Name": "M57 Ring Nebula",
+    "RA_Hour": 18,
+    "RA_Min": 53,
+    "RA_Sec": 35,
+    "Decl_Hour": 33,
+    "Decl_Min": 1,
+    "Decl_Sec": 47
+    },
+    {
+    "ObjectID": 11,
+    "Name": "44 Eta Herculis",
+    "RA_Hour": 16,
+    "RA_Min": 43,
+    "RA_Sec": 32,
+    "Decl_Hour": 38,
+    "Decl_Min": 53,
+    "Decl_Sec": 40
+    },
+    {
+    "ObjectID": 12,
+    "Name": "M13",
+    "RA_Hour": 16,
+    "RA_Min": 41,
+    "RA_Sec": 41,
+    "Decl_Hour": 36,
+    "Decl_Min": 27,
+    "Decl_Sec": 39
+    },
+    {
+        "ObjectID": 13,
+        "Name": "Aldebaran",
+        "RA_Hour": 4,
+        "RA_Min": 37,
+        "RA_Sec": 1,
+        "Decl_Hour": 16,
+        "Decl_Min": 32,
+        "Decl_Sec": 44
+        }
     ]
-    

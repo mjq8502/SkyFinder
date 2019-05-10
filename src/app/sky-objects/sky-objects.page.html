@@ -7,14 +7,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of skyObjects">
-      <!-- <ion-icon [name]="item." slot="start"></ion-icon> -->
-      {{item.ObjectID}}
-      <div class="item-note" slot="end">
-        {{item.Name}}
-      </div>
-    </ion-item>
-  </ion-list>
-</ion-content>
+<!-- <ion-card> -->
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let item of skyObjects">
+        {{item.ObjectID}}
+        <div class="item-note" slot="end">
+          {{item.Name}}
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <!-- <ion-fab vertical="bottom" horizontal="start" edge slot="fixed"> -->
+      <ion-fab-button  (click) = "button_click_AddNewSkyObject()">
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+<!-- </ion-card> -->
+
+
