@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'telescopes', loadChildren: './telescopes/telescopes.module#TelescopesPageModule' },
   { path: 'sky-objects', loadChildren: './sky-objects/sky-objects.module#SkyObjectsPageModule' },
   { path: 'paths', loadChildren: './paths/paths.module#PathsPageModule' },
-  { path: 'path-detail', loadChildren: './path-detail/path-detail.module#PathDetailPageModule' }
+  { path: 'path-detail', loadChildren: './path-detail/path-detail.module#PathDetailPageModule' },
+  { path: 'telescope-create-update', loadChildren: './telescope-create-update/telescope-create-update.module#TelescopeCreateUpdatePageModule' }
 ];
 
 @NgModule({

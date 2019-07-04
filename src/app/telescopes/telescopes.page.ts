@@ -12,4 +12,9 @@ export class TelescopesPage implements OnInit {
   ngOnInit() {
   }
 
+
+  button_click_AddNewTelescope(){
+    
+  }
+
 }

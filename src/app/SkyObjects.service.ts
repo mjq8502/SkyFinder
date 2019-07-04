@@ -6,17 +6,28 @@ import { ISkyObject } from './SkyObjects';
 import { ISkyPath } from './SkyPath';
 import { ISkyPath2 } from './SkyPaths2';
 import { ITelescope } from './ITelescope';
+import { SqlStorageService } from './sql-storage.service';
+
+const win: any = window;
 @Injectable({
     providedIn: 'root'
 })
 export class SkyObjectService {
+    private SqlMode = false;
+
     //private ProductUrl = 'assets/products.json';
     private SkyObjectUrl = 'assets/SkyObjects.json';
     private SkyPathUrl = 'assets/SkyPaths.json'
     private SkyPath2Url = 'assets/SkyPaths2.json'
     private TelescopeUrl = 'assets/TelescopeJson.json'
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private sql: SqlStorageService) { 
+        if(win.sqlitePlugin) {
+            this.SqlMode = true;
+        } else {
+            console.warn('SQLite plugin not installed. Falling back to Ionic storage');
+        }
+    }
 
     getSkyObjects(): Observable<ISkyObject[]> {
         return this.http.get<ISkyObject[]>(this.SkyObjectUrl).pipe(
@@ -42,6 +53,15 @@ export class SkyObjectService {
             catchError(this.handleError));
     }
 
+    saveTelescope(telescope: ITelescope){
+        if(this.SqlMode) {
+            this.sql.set(telescope.TelescopeID.toString(), JSON.stringify(telescope));
+        } else {
+            // Do nothing here.
+        }
+
+    }
+
 
     private handleError(err: HttpErrorResponse) {
         let errorMessage = '';
@@ -53,6 +73,14 @@ export class SkyObjectService {
         }
         console.error(errorMessage);
         return throwError(errorMessage);
+    }
+
+    initStorage(): Promise<any> {
+        if (this.SqlMode) {
+            return this.sql.initializeDatabase();
+        } else {
+            return new Promise(resolve => resolve());
+        }
     }
 }
 
